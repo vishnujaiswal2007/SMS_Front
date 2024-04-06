@@ -1,0 +1,22 @@
+{
+  "name": "acc_front",
+  "version": "1.0.0",
+  "description": "Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishnujaiswal2007/ACC_Front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vishnujaiswal2007/ACC_Front/issues"
+  },
+  "homepage": "https://github.com/vishnujaiswal2007/ACC_Front#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}

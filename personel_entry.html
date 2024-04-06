@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- With CDN Link -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+  <!-- Without CDN link -->
+  <!-- <link rel="stylesheet" href="main.css">
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/jquery-3.7.1.js"></script> -->
+
+
+  <link rel="icon" type="image/x-icon" href="./images/newlogo.jpeg">
+  <title>Personel Entry Form</title>
+</head>
+
+<body>
+  <form id="personal_details" method="post">
+    <div class="container-sm pt-3 my-3"
+      style="text-align:center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+      <img src="./images/old_logo.jpeg" class="rounded" alt="UoA" width="150" height="150">
+      <h3><u><b>UNIVERSITY OF ALLAHABAD</b></u></h3><br>
+      <h4><u>Personnels Data Enty Form (Personal Pathrak)</u></h4>
+    </div>
+
+    <div>
+
+    </div>
+
+    <!-- <div class="container-sm pt-3 my-3 border"
+      style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" id="eidadd">
+      <label><b>Employee ID:</b></label>
+      <input size="10" class="mt-3 ms-4" type="text" placeholder="Employee-ID" name="aeid" id="aeid" required>
+      <button class="btn btn-success" id="start" onclick="addnewemp()">Add</button><br>
+    </div> -->
+
+    <div class="container-sm pt-3 my-3 border"
+      style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" id="aftadd">
+
+      <!-- Enter details of Employee -->
+
+      <!-- <label><b>Employee ID:</b></label> -->
+      <!-- <input size="10" class="mt-3 ms-4" type="number" name="eid" id="eid" value="0" hidden>
+      <input size="10" class="mt-3 ms-4" type="text" name="status" id="status" hidden> -->
+      <label><b>Personnel Name:</b></label>
+      <input class="mt-3 ms-4 " type="text" placeholder="First Name" name="f_name" id="f_name" required>
+      <input class="mt-3 ms-5" type="text" placeholder="Second Name" name="s_name" id="s_name">
+      <input class="mt-3 ms-5" type="text" placeholder="Last Name" name="l_name" id="l_name" required><br>
+
+      <label class="pt-3"><b>Father Name:</b></label>
+      <input class="ms-5" type="text" placeholder="Father's Full Name" name="fat_name" id="fat_name" required><br>
+      <label class="pt-3"><b>Mother Name:</b></label>
+      <input class="ms-4" type="text" placeholder="Mother's Full Name" name="mot_name" id="mot_name" required><br>
+      <label class="pt-3"><b>Date of Birth:</b></label>
+      <input class="ms-4" type="date" placeholder="Date of Birth" name="dob" id="dob"
+        required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;
+      <!-- <input type="button" onclick="calcrtd()" value="calcrtd"> -->
+      <label class="pt-2"><b>E-mail:</b></label>
+      <input class="ms-4" type="text" placeholder="Example: acd@gmail.com/etc" name="email" id="email" onchange="act()"
+        required> &nbsp;
+      <label class="pt-2"><b>Mobile Number:</b></label>
+      <input size="10" class="ms-4" type="text" placeholder="0123456789" name="mob" id="mob" maxlength="10"
+        required><br>
+      <summary class="ms-2">Need to Upload Metric Certificate for Date of Birth Verification</summary>
+
+      <div class="pt-2">
+        <label><b>Permanent Address:</b></label>
+        <input class="mt-3 ms-auto" type="text" placeholder="House Number" name="p_hn" id="p_hn" required>
+        <input class="mt-3 ms-auto" type="text" placeholder="Street Name/Area" name="p_area" id="p_area" required>
+        <input class="mt-3 ms-auto" type="text" placeholder="Name of Apartment/Locality" name="p_aprt" id="p_aprt"
+          required>
+        <input class="mt-3 ms-auto" type="text" placeholder="City" name="p_city" id="p_city" required>
+        <input class="mt-3 ms-auto" type="text" placeholder="Pin Number" name="p_pin" id="p_pin" maxlength="6" size="6"
+          required>
+      </div>
+
+      <div class=" pt-2 form-check form-check-inline">
+        <input type="checkbox" class="form-check-input" name="same_addr" id="same_addr" onclick="sameaddr()"
+          onchange=" showorhide()">
+        <label class="form-check-label" for="same_addr">Correspondance Address is same as Permanent</label>
+        
+      </div>
+
+      <div class="pt-1" id="corr_addr">
+        <label><b>Correspondance Address:</b></label>
+        <input class="mt-3 ms-auto" type="text" placeholder="House Number" name="c_hn" id="c_hn" required>
+        <input class="mt-3 ms-auto" type="text" placeholder="Street Name/Area" name="c_area" id="c_area" required>
+        <input class="mt-3 ms-auto" type="text" placeholder="Name of Apartment/Locality" name="c_aprt" id="c_aprt"
+          required>
+        <input class="mt-3 ms-auto" type="text" placeholder="City" name="c_city" id="c_city" required>
+        <input class="mt-3ms-auto" type="text" placeholder="Pin Number" name="c_pin" id="c_pin" maxlength="6" size="6"
+          required>
+      </div>
+
+      <div class="container-sm pt-3 my-5 border">
+        <h3><u>Present Status:</u></h3>
+
+        <label><b>Present Designation : </b></label>
+        <input size="40" class="mt-3 ms-auto" list="desig" type="text"
+          placeholder="Presently as a" name="prst_desig" id="prst_desig" required>
+        <datalist id="prst_desig">
+          <option value="Junior Office Assistant">
+          <option value="Assistant Registrar">
+          <option value="Registrar">
+          <option value="Computer Operator">
+          <option value="System Analyst">
+        </datalist>
+
+        <label><b>Department :</b></label>
+        <input class="mt-3 ms-auto" type="text" placeholder="Present Department" name="prst_dept" id="prst_dept"
+          required>
+
+        <label><b>Date of Joining:</b></label>
+        <input class="mt-3 ms-auto" type="date" placeholder="Date of Appointment" name="prst_doj" id="prst_doj"
+          required><br>
+
+        <!-- <label><b>Date of Retirement:</b></label>
+        <input class="mt-3 ms-auto" type="text" placeholder="Date of Retirement" name="dor" id="dor" readonly> -->
+
+        <label><b>Pay Scale/Level/Fixed:</b></label>
+        <input class="mt-3 ms-auto" type="text" placeholder="Present Pay Scale/Level"
+          name="prst_bp" id="prst_bp" required>
+
+        <label><b>Grade Pay :</b></label>
+        <input class="mt-3 ms-auto" type="text" placeholder="Present Grade Pay" name="prst_gp" id="prst_gp" required><br>
+
+        <label><b>Order Number and Date:</b></label>
+        <input size="10" class="mt-3 ms-auto" type="text" placeholder="Order Number" name="prst_odn" id="prst_odn" required>
+        <input size="10" class="mt-3 ms-auto" type="date" placeholder="Office Order Date" name="prst_odrd" id="prst_odrd"
+          required>
+
+        <label for="nature_prst" class="mt-3 form-label"><b>Present Status:</b></label>
+        <input size="10" list="nature_prst1" name="nature_prst" id="nature_prst" placeholder="Nature" required>
+        <datalist id="nature_prst1">
+          <option value="Regular">
+          <option value="Daily Wager">
+          <option value="Master Rol">
+          <option value="Contract">
+        </datalist>
+
+        <label for="prst_grp" class="mt-3 form-label"><b>Group:</b></label>
+        <input size="7" list="prst_grp-list" name="prst_grp" id="prst_grp" placeholder="Group A/B/C" required>
+        <datalist id="prst_grp-list">
+          <option value="A">
+          <option value="B">
+          <option value="C">
+        </datalist>
+
+        <summary class="ms-2">Need to Upload Office Order</summary>
+
+      </div>
+
+
+      <div class="container-sm pt-3 my-5 border">
+        <h3><u>UPLOAD: Required Documents & Photographs</u></h3>
+
+        <div id="personnel_photo">
+          <label for="emp_pic" class="mt-3 form-label">Personnel recent coloured photograph:-</label>&emsp; &emsp;
+          &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;
+          <input type="file" id="emp_pic" name="emp_pic" accept=".jpg, .jpeg, .png" onchange="emp_photograph()" />
+          <img src="" id="preview_photo" height="75" />
+          <textarea id="emp_photo" name="emp_photo" hidden></textarea>
+        </div>
+
+        <div id="personnel_signature">
+          <label for="emp_sign" class="mt-3 form-label">Personnel signature:-</label>&emsp; &emsp; &emsp; &emsp; &emsp;
+          &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+          <input type="file" id="emp_sign" name="emp_sign" accept=".jpg, .jpeg, .png" onchange=" emp_sig()" />
+          <img src="" id="preview_sig" height="75" />
+          <textarea id="emp_signature" name="emp_signature" hidden></textarea>
+        </div>
+
+
+        <div id="prst_appointmnet">
+          <label for="prst_aptt" class="mt-3 form-label">Present post Appointment Order:-</label>&emsp; &emsp; &emsp; &emsp;
+          &emsp;
+          &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; &nbsp;
+          <input type="file" id="prst_aptt" name="prst_aptt" accept=".jpg, .jpeg, .png" onchange="abhikaho()" />
+          <img src="" id="preview_prst_apt" height="75" />
+          <textarea id="prst_apt" name="prst_apt" hidden></textarea>
+        </div>
+
+      <div class="container-sm pt-3 my-5 border" id="loginpass">
+        <h3><u>Account Credentials</u></h3>
+        <label class="pt-3"><b>User Name:</b></label>
+        <label class="ms-4" id="usn"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label class="pt-2"><b>Desired Password:</b></label>
+        <input class="ms-4" type="password" placeholder="Please enter strong password" name="password" id="password"
+          required> &nbsp;
+        <label class="pt-2"><b>Re-password:</b></label>
+        <input class="ms-4" type="password" placeholder="Re-enter the password" name="repass" id="repass"
+          onchange="checkpass()" required>
+          <label class="pt-2"><b>Job Profile:</b></label>
+          <select id="catg" name="catg">
+            <option value="Administration">Administration</option>
+            <option value="UG_Counter">UG Counter</option>
+            <option value="PG_Counter">PG Counter</option>
+            <option value="Degree_counter">Degree Counter</option>
+          </select required>
+          <input name="status" id="status" value="Deactive" hidden>
+      </div>
+
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="pledge" id="pledge"
+          onchange="document.getElementById('submit').disabled = !this.checked" value="accepted">
+        <label class="form-check-label" for="pledge">I, hereby, declare that the particulars/information given above are
+          true to the best of my knowledge and belief. I will be the fully responsible, if any, of the aforementioned
+          particulars/information are being found wrong/false. </label>
+        <!-- <input type="text" name="cat" id="cat" hidden> -->
+      </div>
+
+    </div>
+
+    </div>
+    <div style="text-align:center" id="sbtn">
+      <!-- <input type="button" id="submit" onclick="formsubmit()" value="Submit" disabled> -->
+      <button class="btn btn-primary" id="submit" onclick="formsubmit()" disabled>Submit</button>
+      <!-- <a href="./document_upload.html" class="btn btn-success" id="next_btn">Next>></a> -->
+      <!-- Form Exit-->
+      <button class="btn btn-danger" id="ext" onclick="reload()">Exit--</button>
+    </div>
+    <p id="demo"></p>
+
+  </form>
+
+
+
+  <script>
+
+function act() {
+      document.getElementById("usn").innerHTML = document.getElementById("email").value;
+    }
+
+    function emp_photograph() {
+        const file = document.getElementById('emp_pic').files[0];
+        const reader = new FileReader();
+        if (file) {
+          reader.readAsDataURL(file);
+          reader.addEventListener("load", () => {
+            var x = reader.result;
+            // convert image file to base64 string
+            document.getElementById('preview_photo').src = x;
+
+            document.getElementById('emp_photo').innerText = x;
+            // console.log(x);
+          }, false);
+
+        } else {
+          alert("Please upload the Employee Photograph");
+          process.exit();
+        }
+      };
+ 
+
+
+    function emp_sig() {
+      const file = document.getElementById('emp_sign').files[0];
+      const reader = new FileReader();
+
+      if (file) {
+        reader.readAsDataURL(file);
+        reader.addEventListener("load", () => {
+          var x = reader.result;
+          // convert image file to base64 string
+          document.getElementById('preview_sig').src = x;
+          document.getElementById('emp_signature').innerText = x;
+        }, false);
+      } else {
+        alert("Please upload the Employee Signature");
+        process.exit();
+      }
+    }
+
+    function abhikaho() {
+      const file = document.getElementById('prst_aptt').files[0];
+      const reader = new FileReader();
+
+      if (file) {
+        reader.readAsDataURL(file);
+        reader.addEventListener("load", () => {
+          var x = reader.result;
+          // convert image file to base64 string
+          document.getElementById('preview_prst_apt').src = x;
+          document.getElementById('prst_apt').innerText = x;
+        }, false);
+      } else {
+        alert("Please upload the Present post Appointment Order");
+        process.exit();
+      }
+    }
+
+    function reload() {
+      window.open("login.html", "_parent");
+    }
+
+    function checkpass() {
+      if (document.getElementById("password").value != document.getElementById("repass").value) {
+        alert("Kindly enter the same as: DESIRED PASSWORD");
+      }
+    }
+
+
+    function sameaddr() {
+
+      var a = document.getElementById("p_hn").value;
+      document.getElementById("c_hn").value = a;
+
+      var b = document.getElementById("p_area").value;
+      document.getElementById("c_area").value = b;
+
+      var c = document.getElementById("p_aprt").value;
+      document.getElementById("c_aprt").value = c;
+
+      var d = document.getElementById("p_city").value;
+      document.getElementById("c_city").value = d;
+
+      var e = document.getElementById("p_pin").value;
+      document.getElementById("c_pin").value = e;
+
+    };
+
+    function showorhide() {
+      if ($('#same_addr').is(':checked')) {
+
+        $("div#corr_addr").children().prop('disabled', 'true');
+
+      } else {
+        document.getElementById("c_hn").disabled = this.checked;
+        document.getElementById("c_hn").value = null;
+        document.getElementById("c_area").disabled = this.checked;
+        document.getElementById("c_area").value = null;
+        document.getElementById("c_aprt").disabled = this.checked;
+        document.getElementById("c_aprt").value = null;
+        document.getElementById("c_city").disabled = this.checked;
+        document.getElementById("c_city").value = null;
+        document.getElementById("c_pin").disabled = this.checked;
+        document.getElementById("c_pin").value = null;
+
+      }
+
+    };
+
+
+    function formsubmit() {
+
+    if(confirm("Are your Sure to submit. Data will be final")==true){
+
+      emp_photograph();
+      emp_sig();
+      abhikaho();
+
+      // console.log("photo dep_1", document.getElementById("dep_1_photo").disabled)
+
+      if (document.getElementById("email").value == 0 || document.getElementById("mob").value == 0 || document
+        .getElementById("password").value == 0 || document.getElementById("dob").value == 0) {
+
+        alert("please fill the form correctly");
+
+      } else{
+
+        event.preventDefault();
+        var x = $('#personal_details').serialize();
+        // var x = {"name":"John", "age":30, "car":null};
+        // var formDataVar = JSON.stringify(x);
+
+
+        $(document).ready(function () {
+          $.ajax({
+            url: 'http://localhost:8081/formsubmit',
+            type: 'POST',
+            data: x,
+            dataType: 'json',
+            contentType: 'application/x-www-form-urlencoded',
+            // processData: false,
+            success: function (data, textStatus, request) {
+              // console.log(data);
+              if (data == "1") {
+                alert("Data Saved Sucessfully: Your account will active shortly");
+                // window.open("login.html", "_parent")
+              } else{
+                alert("Data Not Saved");
+              }
+                window.open("login.html", "_parent");
+              // } else {
+                // alert("Please fill the form completely");
+              // }
+            }
+          })
+        });
+
+      }
+    }else{
+      return;
+    }
+  };
+  
+  </script>
+
+</body>
+
+</html>
