@@ -52,11 +52,12 @@
       <input size="10" class="mt-3 ms-4" type="text" name="status" id="status" hidden> -->
 
       <label><b>Personnel Name:</b></label>
-      <input class="mt-3 ms-4 " type="text" placeholder="First Name" name="f_name" id="f_name" required>
+      &ensp;&ensp;<input class="mt-3 ms-4" type="text" placeholder="First Name" name="f_name" id="f_name" required>
       <input class="mt-3 ms-5" type="text" placeholder="Second Name" name="s_name" id="s_name">
       <input class="mt-3 ms-5" type="text" placeholder="Last Name" name="l_name" id="l_name" required><br>
 
       <label><b>Present Designation : </b></label>
+      &ensp;
       <input size="30" class="mt-3 ms-auto" list="desig" type="text" placeholder="Presently as a" name="prst_desig"
         id="prst_desig" required>
       <datalist id="prst_desig">
@@ -69,12 +70,14 @@
 
       &ensp;&ensp;
 
-      <label><b>Department :</b></label>
+      <br><label><b>Department :</b></label>
+      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
       <input class="mt-3 ms-auto" type="text" placeholder="Present Department" name="prst_dept" id="prst_dept" required>
 
       <br>
 
       <label for="prst_grp" class="mt-3 form-label"><b>Group:</b></label>
+      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
       <input size="7" list="prst_grp-list" name="prst_grp" id="prst_grp" placeholder="Group A/B/C" required>
       <datalist id="prst_grp-list">
         <option value="A">
@@ -84,7 +87,8 @@
 
       &ensp;&ensp;
 
-      <label for="nature_prst" class="mt-3 form-label"><b>Present Status:</b></label>
+      <br><label for="nature_prst" class="mt-3 form-label"><b>Present Status:</b></label>
+      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
       <input size="10" list="nature_prst1" name="nature_prst" id="nature_prst" placeholder="Nature" required>
       <datalist id="nature_prst1">
         <option value="Regular">
@@ -95,7 +99,8 @@
 
       &ensp;&ensp;&ensp;&ensp;
 
-      <label class="pt-2"><b>Job Profile:</b></label>
+      <br><label class="pt-2"><b>Job Profile:</b></label>
+      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;
       <select id="catg" name="catg">
         <option value="Administration">Administration</option>
         <option value="UG_Counter">UG Counter</option>
@@ -104,7 +109,7 @@
       </select required>
 
 
-      <div class="container-sm pt-3 my-5 border">
+      <!-- <div class="container-sm pt-3 my-5 border">
         <h3><u>UPLOAD: Required Documents & Photographs</u></h3>
 
         <div id="personnel_photo">
@@ -123,22 +128,21 @@
           <textarea id="emp_signature" name="emp_signature" hidden></textarea>
         </div>
 
-      </div>
+      </div> -->
 
 
-      <div class="container-sm pt-3 my-5 border" id="loginpass">
-        <h3><u>Account Credentials</u></h3>
+      <!-- <div class="container-sm pt-3 my-5 border" id="loginpass"> -->
+        <br><br><h3><u>Account Credentials</u></h3>
         <label class="pt-2"><b>E-mail:</b></label>
-        <input class="ms-4" type="text" placeholder="Example: acd@gmail.com/etc" name="email" id="email"
+        <input class="ms-4" type="text" placeholder="Example: acd@gmail.com" name="email" id="email"
           onchange="act()" required>
         &ensp;&ensp;&ensp;&ensp;
-        <label class="pt-2"><b>Mobile Number:</b></label>
+        <label class="pt-3"><b>User Name:</b></label>
+        <label class="ms-4" id="usn"></label>
+        <br><br><label class="pt-2"><b>Mobile Number:</b></label>
         <input size="10" class="ms-4" type="text" placeholder="0123456789" name="mob" id="mob" maxlength="10" required>
 
         &ensp;&ensp;&ensp;&ensp;
-
-        <label class="pt-3"><b>User Name:</b></label>
-        <label class="ms-4" id="usn"></label>
 
         <br><br>
 
@@ -150,8 +154,8 @@
           onchange="checkpass()" required>
 
         <input name="status" id="status" value="Deactive" hidden>
-      </div>
-
+      <!-- </div> -->
+      <br><br>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" name="pledge" id="pledge"
           onchange="document.getElementById('submit').disabled = !this.checked" value="accepted">
@@ -166,7 +170,7 @@
     </div>
     <div style="text-align:center" id="sbtn">
       <!-- <input type="button" id="submit" onclick="formsubmit()" value="Submit" disabled> -->
-      <button class="btn btn-primary" id="submit" onclick="formsubmit()" disabled>Submit</button>
+      <button class="btn btn-primary" type="submit" id="submit" onclick="formsubmit()" disabled>Submit</button>
       <!-- <a href="./document_upload.html" class="btn btn-success" id="next_btn">Next>></a> -->
       <!-- Form Exit-->
       <button class="btn btn-danger" id="ext" onclick="reload()">Exit--</button>
@@ -244,11 +248,20 @@
       $(document).ready(function () {
 
         if (confirm("Are your Sure to submit. Data will be final") == true) {
-          if (document.getElementById("email").value == 0 || document.getElementById("mob").value == 0 || document
-            .getElementById("password").value == 0) {
+          if (document.getElementById("f_name").value == 0 ||
+          document.getElementById("l_name").value == 0 ||
+          document.getElementById("prst_desig").value == 0 || 
+          document.getElementById("prst_dept").value == 0 ||
+          document.getElementById("prst_grp").value == 0 ||
+          document.getElementById("nature_prst").value == 0 ||
+          document.getElementById("catg").value == 0 ||
+          document.getElementById("email").value == 0 || 
+          document.getElementById("mob").value == 0 || 
+          document.getElementById("password").value == 0||
+          document.getElementById("repass").value == 0) {
 
-            emp_photograph();
-            emp_sig();
+            // emp_photograph();
+            // emp_sig();
 
             alert("please fill the form correctly");
 
