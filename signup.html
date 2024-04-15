@@ -228,7 +228,7 @@
 
 
     function reload() {
-      window.open("login.html", "_parent");
+      window.open("./login.html", "_parent");
     }
 
     function checkpass() {
@@ -274,11 +274,13 @@
               contentType: 'application/x-www-form-urlencoded',
               processData: false,
               success: function (data, textStatus, request) {
+                console.log("Data is ", data);
+                console.log("textStatus ", textStatus);
                 if (data.status === 'sucess') {
                   alert(data.message);
                   window.open("login.html", "_parent")
                 } else {
-                  alert("Data Not Saved");
+                  alert(data.message);
                 }
                 
               }
