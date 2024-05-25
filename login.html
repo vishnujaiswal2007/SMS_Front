@@ -83,6 +83,29 @@
       var pass = document.getElementById("password").value
       if (user == '' || pass == '') {
         alert("The Credentail fields should not be blank")
+<<<<<<< HEAD
+      }else{
+      $(document).ready(function(){
+        $.ajax({
+          url: 'http://localhost:8081/login',
+          type: 'POST',
+          data: {
+                username: user,
+                password: pass
+          },
+          dataType: 'json',
+          contentType: 'application/x-www-form-urlencoded',
+          success: function (data, textStatus, request) {
+           if(data.status ==='sucess'){
+            window.open("homepage.html");
+            // alert(data.message);
+            // parent.location.href = './homepage.html';
+           }else{
+            alert(data.message);
+           }
+          }
+          
+=======
       } else {
         $(document).ready(function () {
           $.ajax({
@@ -106,6 +129,7 @@
             }
 
           });
+>>>>>>> fbc6cb06431895ce2b573232d27fc251f05241e8
         });
       };
     };
