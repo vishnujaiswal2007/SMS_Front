@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js "></script> -->
+
+
+  <link rel="icon" type="image/x-icon" href="./images/newlogo.jpeg">
+  <title>UG Student Details</title>
+</head>
+
+<body onload="getcourse()">
+
+  <form id="ug_details">
+    <div class="container-sm pt-3 my-3"
+      style="text-align:center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+      <img src="./images/old_logo.jpeg" class="rounded" alt="UoA" width="150" height="150">
+      <h3><u><b>UNIVERSITY OF ALLAHABAD</b></u></h3>
+      <div style="margin-top: 0%; font-size: 15px; font-style: normal;">(A Central University established by an
+        Act
+        of Parliament)</div>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark sticky-top"
+      style="padding-top: 0%; padding-bottom: 0%;">
+      <a class="navbar-brand" href="./homepage.html"><img src="./images/old_logo.jpeg" alt="UoA"
+          style="width: 40px;"></a>
+      <!-- <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="navbar-brand" href="./homepage.html"><img src="./images/old_logo.jpeg" alt="UoA" style="width: 40px;">
+        </a>
+          </li>
+      </ul>
+
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+              <img src="./images/NOimg.png" ; width="50" height="50"
+                  class="nav-link text-white dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#" onclick="exit()">Sign Out</a></li>
+              </ul>
+          </li>
+      </ul> -->
+    </nav>
+
+
+    <div id="alldetails" class="container-sm pt-2 my-5 border"
+      style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+
+
+      <label for="course_name" class="mt-3 form-label"><b>Corse Name:</b></label>
+      <input size="20" list="course_nm" name="course_name" id="course_name" placeholder="Under Graduate Courses"
+        onchange="en_able()">
+
+      <datalist id="course_nm">
+        <!-- <option value="BA">Bachelor of Arts</option>
+        <option value="BSc">Bachelor of Science</option>
+        <option value="BCOM">Bachelor of Commerce</option>
+        <option value="BPA">Bachelor of Performing Arts</option>
+        <option value="BSc HS">BSc Home Science</option> -->
+      </datalist>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label><b>Enrolment Number : </b></label>
+      <input size="20" type="text" id="enr" name="enr" placeholder="Enter a valid Enrolment Number" disabled>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button id="gd" class="btn btn-primary" onclick="getdetails()"> Get Details</button>
+
+    </div>
+  </form>
+
+  <div class="container-sm pt-3 my-3"
+    style="text-align:center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Course</th>
+          <th scope="col">Student Name</th>
+          <th scope="col">Father's Name</th>
+          <th scope="col">Mother's Name</th>
+          <th scope="col">Result</th>
+          <!-- <th scope="col">Password</th> -->
+          <!-- <th scope="col">Profile</th> -->
+          <!-- <th scope="col">Permision</th> -->
+        </tr>
+      </thead>
+      <tbody id="inst">
+        <!-- <tr>
+        <td><span></span></td>
+        <td><span></span></td>
+        <td><span></span></td>
+        <td><span></span></td>
+        <td><span></span></td>
+        <td><span></span></td>
+      </tr> -->
+      </tbody>
+    </table>
+  </div>
+
+
+  <script>
+    function getcourse() {
+      event.preventDefault()
+      $(document).ready(function () {
+        $.ajax({
+          url: 'http://localhost:8081/getcourse',
+          type: 'POST',
+          // data: {
+          //   course: document.getElementById('course_name').value,
+          //   enrolment: document.getElementById('enr').value
+          // },
+          dataType: 'json',
+          contentType: 'application/x-www-form-urlencoded',
+          success: function (data, textStatus, req) {
+            // alert("Total number of courses is " + data.check.length);
+            if (data.status === 'sucess') {
+                var g = ""
+            for (var i = 0; i < data.check.length; i++) {
+              //  console.log(data[i]);
+              // <option value="BSc">Bachelor of Science</option>
+              g += 
+              '<option value="'+ data.check[i].nm + '">'+ data.check[i].name + '"</option>"'
+            }
+            document.getElementById('course_nm').innerHTML = g;
+        
+              } else {
+                alert('Kuch Gadbad hai');
+              }
+            }
+         
+
+        })
+      })
+
+    }
+
+
+
+
+
+
+    function getdetails() {
+      event.preventDefault()
+      var y = document.getElementById('enr').value;
+      if (y) {
+        $(document).ready(function () {
+          $.ajax({
+            url: 'http://localhost:8081/UG_details',
+            type: 'POST',
+            data: {
+              course: document.getElementById('course_name').value,
+              enrolment: document.getElementById('enr').value
+            },
+            dataType: 'json',
+            contentType: 'application/x-www-form-urlencoded',
+            success: function (data, textStatus, req) {
+              if (data.status === 'sucess') {
+                alert(data.message);
+              } else {
+                alert('Kuch Gadbad hai');
+              }
+            }
+
+          })
+        });
+
+
+      } else {
+        alert("Enrolment Number should not be blank");
+      }
+
+
+
+   // var g = "",
+            //   k = "form-check form-switch",
+            //   l = "form-check-input",
+            //   o = "checkbox";
+
+            // for (var i = 0; i < data.length; i++) {
+            //   //  console.log(data[i]);
+            //   g += "<tr id =h" + i + ">" +
+            //     '<td><a onclick=goto("' + data[i]._id + '") href="#">' + (data[i].f_name + " " + data[i]
+            //       .s_name + " " + data[i].l_name).toUpperCase() + "</a></td>" +
+            //     "<td><span>" + data[i].f_desig + "</span></td>" +
+            //     "<td><span>" + data[i].email + "</span></td>" +
+            //     "<td><span>" + data[i].catg + "</span></td>" +
+            //     // "<td><span>" + data[i].password + "</span></td>" +
+            //     // "<td><span>" + data[i].profile + "</span></td>" +
+            //     // '<td style="text-align:center;"><span>' + '<div class="form-check form-switch">'+
+            //     // '<input class="form-check-input" type="checkbox" id="inorout"></div>'+
+            //     // "</span></td>" +
+            //     "</tr>";
+            // }
+            // document.getElementById('inst').innerHTML = g;
+          // }
+
+
+
+
+    }
+
+    function en_able() {
+      document.getElementById('enr').disabled = false;
+    }
+    // function exit() {
+    //     if (confirm("Are you sure for Exit") == true) {
+    //         window.open('login.html', '_self').close()
+
+    //     }
+    // }
+  </script>
+</body>
+
+</html>
