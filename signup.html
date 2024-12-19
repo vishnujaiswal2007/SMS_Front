@@ -105,6 +105,7 @@
       <br><label class="pt-2"><b>Job Profile:</b></label>
       &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;
       <select id="catg" name="catg">
+        <option value="Misc">Miscellaneous</option>
         <option value="Administration">Administration</option>
         <option value="UG_Counter">UG Counter</option>
         <option value="PG_Counter">PG Counter</option>
@@ -137,7 +138,7 @@
       <!-- <div class="container-sm pt-3 my-5 border" id="loginpass"> -->
         <br><br><h3><u>Account Credentials</u></h3>
         <label class="pt-2"><b>E-mail:</b></label>
-        <input class="ms-4" type="text" placeholder="Example: acd@gmail.com" name="email" id="email"
+        <input class="ms-4" type="text" style="text-transform: lowercase;" placeholder="Example: acd@mail.com" name="email" id="email"
           onchange="act()" required>
         &ensp;&ensp;&ensp;&ensp;
         <label class="pt-3"><b>User Name:</b></label>
@@ -186,7 +187,8 @@
 
   <script>
     function act() {
-      document.getElementById("usn").innerHTML = document.getElementById("email").value;
+      document.getElementById("usn").innerHTML = document.getElementById("email").value.toLowerCase();
+      document.getElementById("email").value = document.getElementById("email").value.toLowerCase();
     }
 
     function emp_photograph() {
@@ -244,7 +246,7 @@
 
     function formsubmit() {
 
-      event.preventDefault();
+            event.preventDefault();
       var x = $('#personal_details').serialize();
       // var x = {"name":"John", "age":30, "car":null};
       // var formDataVar = JSON.stringify(x);
@@ -270,7 +272,7 @@
 
           } else {
            $.ajax({
-          url: 'http://localhost:8081/registration',
+          url: 'http://192.168.1.2:8081/registration',
               type: 'POST',
               data: x,
               dataType: 'json',
@@ -291,7 +293,7 @@
           }
 
         } else {
-          window.open("login.html", "_parent")
+          window.open("http://192.168.1.2:8081/login", "_parent")
         }
       });
       

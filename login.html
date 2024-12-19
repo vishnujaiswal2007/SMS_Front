@@ -61,9 +61,9 @@
               <img src="/images/newlogo.jpeg" class="rounded" alt="UoA" width="50" height="50">
               <h3>University of Allahabad</h3>
               <label>User Name</label>
-              <input type="text" placeholder="Enter your Registered Mobile number" id="username"><br>
+              <input type="text" placeholder="Username" id="username"><br>
               <label class="pt-3">Password</label>
-              <input type="password" placeholder="Enter your valid Password" id="password"><br>
+              <input type="password" placeholder="Password" id="password"><br>
               <!-- <a id="lg_btn" type ="button" class="btn btn-primary mt-3 float-left" href="homepage.html">Sign In</a> -->
               <button id="lg_btn" class="btn btn-primary mt-3 float-left" onclick="entpass()">Sign In</button>
             </div>
@@ -79,7 +79,7 @@
   <script>
     function entpass() {
       event.preventDefault();
-      var user = document.getElementById("username").value
+      var user = document.getElementById("username").value.toLowerCase()
       var pass = document.getElementById("password").value
       if (user == '' || pass == '') {
         alert("The Credentail fields should not be blank")
@@ -87,7 +87,7 @@
       } else {
         $(document).ready(function () {
           $.ajax({
-            url: 'http://localhost:8081/login',
+            url: 'http://192.168.1.2:8081/login',
             type: 'POST',
             data: {
               username: user,
@@ -97,7 +97,7 @@
             contentType: 'application/x-www-form-urlencoded',
             success: function (data, textStatus, request) {
               if (data.status === 'sucess') {
-                window.open("homepage.html", "_parent");
+                window.open("http://192.168.1.2:5505/homepage.html", "_parent");
                 // alert(data.message);
                 // parent.location.href = './homepage.html';
               } else {
